@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/users/franky/scripting/pynet'
+let g:netrw_dirhist_2='/home/users/franky/scripting/pynet/pynet'
+let g:netrw_dirhist_3='/home/users/franky/scripting/config_saver2'
