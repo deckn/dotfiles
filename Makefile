@@ -48,7 +48,7 @@ clean_vim:
 	rm -Rf ~/.vim
 
 install_tmux: clean_tmux
-	ln -sf `pwd`/.tmux.conf
+	ln -sf `pwd`/.tmux.conf ~/.tmux.conf
 
 clean_tmux:
 	rm -Rf ~/.tmux.conf
