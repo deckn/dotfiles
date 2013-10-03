@@ -1,0 +1,43 @@
+;
+; User identification
+;
+[user]
+    name = Franky Kayser
+    email = fkayser2@gmail.com
+
+;
+; Automatically colorize console output
+;
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    branchdfh = auto
+    grep = auto
+
+;
+; Aliases
+;
+[alias]
+    ; simple shortcuts
+    st = status
+    co = checkout
+    ci = commit
+
+    ; Show abbreviated log with a branch graph
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lga = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+    ; Show abbreviated log with timestamps
+    sl = log --pretty=format:'%Cgreen%ai%Cblue %h%Creset %s'
+
+[core]
+    ; my global ignores file
+    excludesfile = ~/.gitignore
+
+    ; Let's use vim as the default editor
+    editor = vim
+
+
+[diff]
+    tool = vimdiff

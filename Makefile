@@ -17,6 +17,7 @@ help:
 	@echo '		make install_bash		install bash files							'
 	@echo '		make install_vim		install vim files							'
 	@echo '		make install_tmux		install tmux files							'
+	@echo '		make install_git		install git files							'
 	@echo '																			'
 	@echo 'All install commands are also available as clean commands to remove 		'
 	@echo 'installed files															'
@@ -53,5 +54,12 @@ install_tmux: clean_tmux
 clean_tmux:
 	rm -Rf ~/.tmux.conf
 
+install_git: clean_git
+	ln -sf `pwd`/.gitconfig ~/.gitconfig
+	ln -sf `pwd`/.gitignore ~/.gitignore
+
+clean_git:
+	rm -Rf ~/.gitconfig
+	rm -Rf ~/.gitignore
 
 
