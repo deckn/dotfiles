@@ -24,7 +24,7 @@ help:
 	@echo '																			'
 
 
-all: install_bash install_vim install_tmux
+all: install_bash install_vim install_tmux install_git
 	@echo ''
 	@echo 'dotfiles - Making yourself at home'
 	@echo ''
