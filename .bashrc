@@ -66,8 +66,10 @@ xterm*|rxvt*)
 esac
 
 # start the keychain process
-/usr/bin/keychain $HOME/.ssh/id_rsa
+if [[ $HOSTNAME != BBS*.ipsw.dt.ept.lu ]]; then
+    /usr/bin/keychain $HOME/.ssh/id_rsa
     . ~/.keychain/$HOSTNAME-sh
+fi
 
 
 # Alias definitions.
