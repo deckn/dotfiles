@@ -55,8 +55,8 @@ clean_tmux:
 	rm -Rf ~/.tmux.conf
 
 install_git: clean_git
-	ln -sf `pwd`/.gitconfig ~/.gitconfig
-	ln -sf `pwd`/.gitignore ~/.gitignore
+	ln -sf `pwd`/.gitconfig_global ~/.gitconfig
+	ln -sf `pwd`/.gitignore_global ~/.gitignore
 
 clean_git:
 	rm -Rf ~/.gitconfig
