@@ -65,6 +65,10 @@ xterm*|rxvt*)
     ;;
 esac
 
+# start the keychain process
+/usr/bin/keychain $HOME/.ssh/id_rsa
+    . ~/.keychain/$HOSTNAME-sh
+
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
