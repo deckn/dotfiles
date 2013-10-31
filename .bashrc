@@ -49,11 +49,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-XTERM_TITLE="\[\e]2;\]\u@\H | \w\a\]"
-GIT_BRANCH="\$(~/dotfiles/bin/gitbranch \"\[\e[0m\][\[\e[33;2m\]\" \"\[\e[0m\]] \")"
-NUM_JOBS="\[\e[0m\](\j)"
-
-
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
