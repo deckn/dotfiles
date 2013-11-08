@@ -15,7 +15,7 @@ fi
 # python stuff
 export PYTHONWARNINGS=default
 
-# modifies the promt
+# bash color definitions
 RESET="\e[0m\]"
 BAR="\e[1;30m\]"
 BLUE="\e[1;34m\]"
@@ -24,17 +24,35 @@ ORANGE="\e[0;33m\]"
 RED="\e[0;31m\]"
 GREEN="\e[0;32m\]"
 PURPLE="\e[0;35m\]"
+
 SIZE="$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed 's/total //')"
 XTERM_TITLE="\[\e]2;\]\u@\H | \w\a\]"
-GIT_BRANCH="\$(~/dotfiles/bin/gitbranch \"\[\e[0m\][\[\e[33;2m\]\" \"\[\e[0m\]] \")"
-NUM_JOBS="\[\e[0m\](\j)"
-if [ $(whoami) = "root" ]; then
-    UCL="31;1"
-    PS1_LINE1="${XTERM_TITLE}\[\e[${UCL}m\]┌\[\e[0m\] [\t] \[\e[${UCL}m\]\u\[\e[0m\]@\[\e[32;2m\]\H ${GIT_BRANCH}${NUM_JOBS}"
-    PS1_LINE2="\[\e[${UCL}m\]└ \[\e[34;2m\]\W\[\e[32;2m\] \[\e[${UCL}m\]# \[\e[0m\]"
-    export PS1="$PS1_LINE1\n$PS1_LINE2"
-else
-    PS1_LINE1="${RESET}${BAR}┌(${CYAN}\t${BAR})${BLUE}\u${RESET}@${GREEN}\h${BAR}─(${RED}\j${BAR})──> ${ORANGE}${GIT_BRANCH}${RESET}"
-    PS1_LINE2="${RESET}${BAR}└─(${GREEN}\w${BAR})─(${PURPLE}${SIZE}${BAR})──> ${RESET}$ "
-    export PS1="$PS1_LINE1\n$PS1_LINE2"
+GIT_BRANCH="\$(~/dotfiles/bin/gitbranch \"\[\e[0m\][\[${ORANGE}\" \"\[\e[0m\]] \")"
+
+# command prompt funtion
+# this function is run just before Bash displays a prompt.
+
+function prompt_command_function() {
+    NUM_JOBS="$(jobs)"
+    if [ $(whoami) = "root" ]; then
+        PS1_LINE1="${RESET}${BAR}┌(${CYAN}\t${BAR})${RED}\u${RESET}@${GREEN}\h${BAR}─(${RED}\j${BAR})──> ${GIT_BRANCH}${RESET}"
+        PS1_LINE2="${RESET}${BAR}└─(${GREEN}\w${BAR})─(${PURPLE}${SIZE}${BAR})──> ${RESET}$ "
+        export PS1="$PS1_LINE1\n$PS1_LINE2"
+    else
+        if [[ -z $NUM_JOBS ]]; then
+            PS1_LINE1="${RESET}${BAR}┌(${CYAN}\t${BAR})${BLUE}\u${RESET}@${GREEN}\h${BAR}──> ${GIT_BRANCH}${RESET}"
+        else
+            PS1_LINE1="${RESET}${BAR}┌(${CYAN}\t${BAR})${BLUE}\u${RESET}@${GREEN}\h${BAR}─(${RED}\j${BAR})──> ${GIT_BRANCH}${RESET}"
+        fi    
+        PS1_LINE2="${RESET}${BAR}└─(${GREEN}\w${BAR})─(${PURPLE}${SIZE}${BAR})──> ${RESET}$ "
+        export PS1="$PS1_LINE1\n$PS1_LINE2"
+    fi
+}
+
+if [ "$color_prompt" = yes ]; then
+    PROMPT_COMMAND=prompt_command_function
 fi
+
+unset color_prompt force_color_prompt
+
+# vim: set ft=bash
