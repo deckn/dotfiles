@@ -81,6 +81,14 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Color definitions
+# put in a separate file:
+# ~/.bash_colors
+
+if [ -f ~/.bash_colors ]; then
+    . ~/.bash_colors
+fi
+
 # Export definitions
 # put in a separate file:
 # ~/.bash_exports
