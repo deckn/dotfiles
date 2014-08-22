@@ -1,3 +1,12 @@
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+Plugin 'klen/python-mode'
+Plugin 'kien/ctrlp.vim'
+
 set nocompatible
 
 syntax on
@@ -58,3 +67,24 @@ set showcmd " display incomplete commands
 set scrolloff=7 " Keep a 7-lines 'lookahead' when scrolling
 set wildmenu " Show auto-complete matches
 
+" status line"
+
+set statusline=
+set statusline+=%2.3n
+set statusline+=%#Todo#\|%f\|%*   " The filename
+set statusline+=\ %y " filetype
+set statusline+=\ %m " modified flag
+set statusline+=%r   "
+set statusline+=%=   " Separator
+set statusline+=\|\ Dec:\ %-3b\ Hex:\ 0x%2B " Character byte details
+set statusline+=\ \|\ %20(%4l,%4c%V\ \|\ %3P%) " Cursor position
+
+set laststatus=2 "Always show statusline"
+
+"python-mode options
+
+let g:pymode = 1
+let g:pymode_options_max_line_length = 79
+let g:pymode_options = 1
+let g:pymode_indent = 1
+let g:pymode_folding = 1
