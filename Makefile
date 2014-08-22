@@ -34,11 +34,13 @@ install_bash: clean_bash
 	ln -sf `pwd`/.bashrc ~/.bashrc
 	ln -sf `pwd`/.bash_exports ~/.bash_exports
 	ln -sf `pwd`/.bash_aliases ~/.bash_aliases
+	ln -sf `pwd`/.bash_colors ~/.bash_colors
 
 clean_bash:
 	rm -Rf ~/.bashrc
 	rm -Rf ~/.bash_exports
 	rm -Rf ~/.bash_aliases
+	rm -Rf ~/.bash_colors
 
 install_vim: clean_vim
 	ln -sf `pwd`/.vimrc ~/.vimrc
